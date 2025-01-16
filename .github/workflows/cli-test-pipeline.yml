@@ -95,16 +95,16 @@ jobs:
       - name: Test generated terraform on broker
         run: |
           # Create
-          TF_VAR_broker_url=http://localhost:8080 TF_VAR_broker_username=admin TF_VAR_broker_password=admin tf plan
-          TF_VAR_broker_url=http://localhost:8080 TF_VAR_broker_username=admin TF_VAR_broker_password=admin tf apply -auto-approve
+          TF_VAR_broker_url=http://localhost:8080 TF_VAR_broker_username=admin TF_VAR_broker_password=admin tofu plan
+          TF_VAR_broker_url=http://localhost:8080 TF_VAR_broker_username=admin TF_VAR_broker_password=admin tofu apply -auto-approve
           sleep 1
 
       - name: Create custom messageVPN with 22 messageVpn queues (Paging Test)
         run: |
           pushd ci/broker_vpn_q3
           # Create
-          tf plan
-          tf apply -auto-approve
+          tofu plan
+          tofu apply -auto-approve
           sleep 1
           popd
 
@@ -123,8 +123,8 @@ jobs:
         run: |
           pushd ci/bigtest
           # Create
-          tf plan
-          tf apply -auto-approve
+          tofu plan
+          tofu apply -auto-approve
           sleep 1
           popd
 
